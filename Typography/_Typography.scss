@@ -1,0 +1,211 @@
+#EliteUI .#{$namespace} {
+
+	$header : h1, h2, h3, h4, h5, h6;
+	$headerSizes: 50px, 45px, 40px, 35px, 30px, 25px;
+
+	%sub sub{
+		display: inline-block;
+		width: 100%;
+		font-size: 55%;
+		font-weight: 200;
+		color: #777;
+	}
+
+	h5 sub, h6 sub{
+		font-family: 'opensans';
+	}
+
+	%normal.normal {
+		font-family: 'opensans';
+	}
+
+	#{$header} {
+		@extend %sub;
+		@extend %normal;
+		font-family: 'opensans-light';
+	}
+
+	#{$header} {
+		margin: 35px 0;
+		font-weight: 200;
+		color: #333;
+	}
+
+	@for $i from 1 through 6 {
+	  
+	  #{ nth( $header , $i ) } { 
+	  	font-size: nth( $headerSizes , $i );
+	  	line-height: nth( $headerSizes , $i ) + 10px;
+	  }
+
+	}
+
+	@media all and (max-width: $hugeRez){
+
+		$headerSmall : h1, h2, h3, h4, h5, h6;
+		$headerSizesSmall: 40px, 35px, 30px, 25px, 25px, 25px;
+
+		@for $i from 1 through 6 {
+	  
+		  #{ nth( $header , $i ) } { 
+		  	font-size: nth( $headerSizesSmall , $i );
+		  	line-height: nth( $headerSizesSmall , $i ) + 20px;
+		  }
+
+		}
+
+		%subSmall sub {
+			font-family: 'opensans';
+		}
+
+		#{$header} {
+			@extend %subSmall;
+		}
+
+
+	}
+
+	@media all and (max-width: $smallRez){
+
+		$headerSmall : h1, h2, h3, h4, h5, h6;
+		$headerSizesSmall: 27px, 24px, 23px, 22px, 21px, 20px;
+
+		@for $i from 1 through 6 {
+	  
+		  #{ nth( $header , $i ) } { 
+		  	font-size: nth( $headerSizesSmall , $i );
+		  	line-height: nth( $headerSizesSmall , $i ) + 20px;
+		  	font-weight: 400;
+		  }
+
+		}
+
+		%subset sub {
+			font-size: 16px;
+		}
+
+		#{$header} {
+			@extend %subset;
+		}
+
+	}
+
+	// End of header code
+
+	.center {
+		text-align: center;
+	}
+
+	.justify{
+		text-align: justify;
+	}
+
+	.right {
+		text-align: right;
+	}
+
+	.upper {
+		text-transform: uppercase;
+	}
+
+	.lower {
+		text-transform: lowercase;
+	}
+
+	.caps {
+		text-transform: capitalize;
+	}
+
+	del {
+		text-decoration: strikethrough;
+	}
+
+	em {
+		font-style: normal;
+		text-transform: uppercase;
+	}
+
+	small {
+		font-size: .8em;
+	}
+
+	mark {
+		background-color: #ffd673;
+	}
+
+	ins {
+		text-decoration: none;
+		padding-bottom: 3px;
+		border-bottom: 1px solid #333;
+	}
+
+	b {
+		font-weight: bold;
+	}
+
+	strong {
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+
+	p i {
+		font-style: italic;
+		font-weight: 400;
+	}
+	
+	p, blockquote {
+		padding: 0;
+		margin: 0 0 35px 0;
+		font-size: 16px;
+		line-height: 35px;
+		color:#444
+	}
+
+	blockquote {
+		border-left: 5px solid #777;
+		padding-left: 35px;
+		box-sizing: border-box;
+	}
+
+	cite {
+		font-size: 14px;
+		font-style: italic;
+		font-weight: 400;
+		color: #666;
+	}
+
+}
+
+p.#{$namespace} {
+
+	// Experimental Columns
+
+	@for $i from 2 through 6 {
+		&.desktop-#{$i} {
+			-webkit-column-count: $i;
+    		-moz-column-count: $i;
+    		column-count: $i;
+		}
+	}
+
+	$it: 1;
+
+	@each $rez in $rezArr {
+
+		@media all and ( max-width: $rez ) {
+
+			@for $i from 1 through 5 {
+				&.#{nth($rezName,$it)}-#{$i} {
+					-webkit-column-count: $i;
+		    		-moz-column-count: $i;
+		    		column-count: $i;
+				}
+			}
+
+		}
+
+		$it: $it + 1;
+
+	}
+
+}
