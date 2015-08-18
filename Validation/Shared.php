@@ -1,0 +1,2 @@
+<h1 class="center">Validation</h1>
+<p>Elite UI extends the simple form with advanced validation and optional ajax submission with no need for you to write any Javascript! Needless to say every part of the validation is completely customisable from the custom validation messages, classes and can even be strictly applied if a user inputed invalid data into a field. Truly this is modelled after the AngularJS type of validation with no Javascript having to be written at all!</p>

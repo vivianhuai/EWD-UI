@@ -1,0 +1,372 @@
+// 3D mixins
+
+  @mixin perspective($val){
+    -webkit-perspective: $val;
+    -moz-perspective: $val;
+    perspective: $val;
+  }
+
+  @mixin perspectiveOrigin($val){
+  	-webkit-perspective-origin: $val;
+  	perspective-origin: $val;
+  }
+
+  @mixin transformStyle(){
+  	-webkit-transform-style: preserve-3d;
+  	transform-style: preserve-3d;
+  }
+
+  @mixin transform($val){
+  	-webkit-transform:$val;
+  	-moz-transform:$val;
+  	-ms-transform:$val;
+  	transform:$val;
+  }
+
+  @mixin transformOrigin($val){
+  	-webkit-transform-origin: $val;
+  	transform-origin: $val;
+  }
+
+  // Animation Mixins
+
+  @mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+      @content; 
+    }
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @mixin animation($val){
+  	-webkit-animation:$val;
+  	-moz-animation:$val;
+  	animation:$val;
+  }
+
+  @mixin transition($val...){
+    -webkit-transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+    transition: $val;
+  }
+
+  // Other Mixins for general styling
+
+  @mixin boxShadow($val...){
+    -webkit-box-shadow: $val;
+    -moz-box-shadow: $val;
+    box-shadow: $val;
+  }
+
+  @mixin textShadow($val...){
+    -moz-text-shadow: $val;
+    -webkit-text-shadow: $val;
+    text-shadow: $val;
+  }
+
+  @mixin borderRadius($val) {
+  	-webkit-border-radius: $val;
+  	-moz-border-radius: $val;
+  	border-radius: $val;
+  }
+
+  @mixin boxSizing{
+  	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+  }
+
+// Namespace & Variables
+
+  $namespace: ewd;
+  // Just short of desktop resolution
+  $massiveRez: 1024px;
+  $hugeRez: 900px;
+  // Tablets
+  $largeRez: 800px;
+  $mediumRez: 680px;
+  // Mobile landscape
+  $smallRez: 500px;
+  // Mobile portrait
+  $tinyRez: 380px;
+
+//Array for resolution itteration
+
+  $rezArr: $massiveRez, $hugeRez, $largeRez, $mediumRez, $smallRez, $tinyRez;
+  $rezName: massive, huge, large, medium, small, tiny;
+
+// Imports
+
+  @import "Icons/_Icons.scss";
+  @import "Forms/_Forms.scss";
+  @import "Typography/_Typography.scss";
+  @import "Grid/_Grid.scss";
+  @import "Buttons/_Buttons.scss";
+
+// Font's
+
+@font-face {
+  font-family: 'opensans';
+  src: url('Fonts/OpenSans-Regular-webfont.eot');
+  src: url('Fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/OpenSans-Regular-webfont.woff') format('woff'),
+       url('Fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('Fonts/OpenSans-Regular-webfont.svg#web_symbols_ligaregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans-light';
+  src: url('Fonts/OpenSans.eot');
+  src: url('Fonts/OpenSans.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/OpenSans.woff') format('woff'),
+       url('Fonts/OpenSans.ttf') format('truetype'),
+         url('Fonts/OpenSans.svg#web_symbols_ligaregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icons';
+  src: url('Fonts/Icons.eot');
+  src: url('Fonts/Icons.eot?#iefix') format('embedded-opentype'),
+       url('Fonts/Icons.woff') format('woff'),
+       url('Fonts/Icons.ttf') format('truetype'),
+       url('Fonts/Icons.svg#web_symbols_ligaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*, *:hover, *:focus, *:active {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// Normalize
+
+  html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+
+  [hidden],
+  template {
+    display: none;
+  }
+
+  a {
+    background-color: transparent;
+  }
+
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  dfn {
+    font-style: italic;
+  }
+
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    font-size: 80%;
+    font-weight: 400;
+    top: -0.5em;
+  }
+
+  img {
+    border: 0;
+  }
+
+  svg:not(:root) {
+    overflow: hidden;
+  }
+
+  figure {
+    margin: 1em 40px;
+  }
+
+  hr {
+    margin: 0 0 45px 0;
+    padding: 0;
+    height: 1px;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+
+  pre {
+    overflow: auto;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+  }
+
+  button {
+    overflow: visible;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  button,
+  html input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+  }
+
+  button[disabled],
+  html input[disabled] {
+    cursor: default;
+  }
+
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  input {
+    line-height: normal;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+  }
+
+  legend {
+    border: 0;
+    padding: 0;
+  }
+
+  textarea {
+    overflow: auto;
+  }
+
+  optgroup {
+    font-weight: bold;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    padding: 0;
+  }
+
+

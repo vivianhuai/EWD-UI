@@ -1,0 +1,241 @@
+// Basic settings
+$maxWidth: 1024px;
+// All other resolutions are 1 column less than desktop, so if desktop has 16 columns all other resolutions have 15 columns
+$desktop: 16;
+$smallGrids: $desktop - 1;
+// Padding values
+$paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
+
+
+.#{$namespace} {
+
+	&.grid {
+		float: left;
+		width: 100%;
+		max-width: $maxWidth;
+		box-sizing: border-box;
+	}
+
+	&.grid .row, 
+	&.grid .row > div,
+	&.row > div {
+		width: 100%;
+		box-sizing: border-box;
+		float: left;
+	}
+
+	&.grid img {
+		max-width: 100%;
+	}
+
+	// Table layout
+
+		&.grid.flex {
+			display: table;
+			table-layout: fixed;
+		}
+
+		&.grid.flex .row {
+			display: table-row;
+			// Flex modern spec only
+			display: -webkit-flex;
+			display: flex;
+			// Flex wrap grid
+			-webkit-flex-wrap: wrap;
+			flex-wrap: wrap;
+			max-width: initial;
+		}
+
+		&.grid.flex .row > div {
+			display: table-cell;
+			float: none;
+		}
+
+		//Break grid
+		&.grid.flex .row > div.break {
+			display: none;
+			width: 100%;
+			padding: 0;
+			margin: 0 0 0 -1px;
+			// Flex
+			-webkit-flex: 0 0px !important;
+			flex: 0 0px !important;
+			-webkit-flex-shrink: 100 !important;
+			flex-shrink: 100 !important;
+		}
+
+		// Verticle alignment
+
+		&.grid.flex.top .row > div, 
+		body &.grid.flex .row.top > div, 
+		html body &.grid.flex .row > div.top {
+			vertical-align: top;
+			-webkit-align-self: flex-start;
+    		align-self: flex-start;
+		}
+
+		&.grid.flex.middle .row > div, 
+		body &.grid.flex .row.middle > div, 
+		html body &.grid.flex .row > div.middle {
+			vertical-align: middle;
+			-webkit-align-self: center;
+    		align-self: center;
+		}
+
+		&.grid.flex.bottom .row > div, 
+		body &.grid.flex .row.bottom > div, 
+		html body &.grid.flex .row > div.bottom {
+			vertical-align: bottom;
+			-webkit-align-self: flex-end;
+    		align-self: flex-end;
+		}
+
+	// Default desktop settings
+
+	@for $i from $desktop through 1 {
+
+		// General only desktop
+
+		&.grid.desktop-#{$i} .row > div,
+		body &.grid .row.desktop-#{$i} > div,
+		&.row.desktop-#{$i} > div {
+			$sum: 100% / $i;
+			width: $sum;
+			// Flex
+			$flexSum: (100% / $i) - 4;
+			-webkit-flex: 1 $flexSum;
+			flex: 1 $flexSum;
+		}
+
+		// Column desktop only override
+
+		html &.grid .row > div.desktop-#{$i},
+		&.row > div.desktop-#{$i},
+		html body &.grid.flex .row > div.desktop-#{$i} {
+			$int : 100% / $desktop;
+			$sumRow : $int * $i;
+			width: $sumRow;
+			// Flex Row
+			-webkit-flex: 1 $sumRow;
+			flex: 1 $sumRow;
+		}
+
+		&.grid.padding-desktop-#{nth($paddingArr,$i)} .row > div,
+		body &.grid .row.padding-desktop-#{nth($paddingArr,$i)} > div,
+		html body &.grid .row > div.padding-desktop-#{nth($paddingArr,$i)},
+		&.row.padding-desktop-#{nth($paddingArr,$i)} > div,
+		body &.row > div.padding-desktop-#{nth($paddingArr,$i)} {
+			padding: 0 #{nth($paddingArr,$i)}px 0 #{nth($paddingArr,$i)}px;
+		}
+
+		// Flex grid table fallback break
+
+		body &.grid.flex .row.desktop-#{$i} > div.break {
+			display: none !important;
+		}
+
+		&.grid.flex.desktop-#{$i} .row > div.break:nth-child(#{$i*2}n) {
+			display: block;
+		}
+
+		body &.grid.flex .row.desktop-#{$i} > div.break:nth-child(#{$i*2}n) {
+			display: block !important;
+		}
+
+	}
+
+
+	// Iteration for resolutions
+
+	@for $it from 1 through 6 {
+
+		$min: 0;
+
+		@if $it != 6 { $min : nth($rezArr,$it + 1); } @else { $min : 0px; }
+
+		@media screen and ( max-width:#{nth($rezArr,$it)} ) {
+
+			@for $i from $smallGrids through 1 {
+
+				// Row override
+
+				&.grid.#{nth($rezName,$it)}-#{$i} .row > div,
+				body &.grid .row.#{nth($rezName,$it)}-#{$i} > div,
+				&.row.#{nth($rezName,$it)}-#{$i} > div {
+					width: 100% / $i;
+				}
+
+				&.grid.flex.#{nth($rezName,$it)}-#{$i} .row > div,
+				body &.grid.flex .row.#{nth($rezName,$it)}-#{$i} > div,
+				&.row.flex.#{nth($rezName,$it)}-#{$i} > div {
+					display: -webkit-flex;
+					display: flex;
+					
+					$sum2: (100% / $i) - 4;
+
+					-webkit-flex: 1 $sum2;
+					flex: 1 $sum2;
+				}
+
+				// Column |or| cell override
+
+				html &.grid .row > div.#{nth($rezName,$it)}-#{$i},
+				&.row > div.#{nth($rezName,$it)}-#{$i},
+				html body &.grid.flex .row > div.#{nth($rezName,$it)}-#{$i}  {
+					$int : 100% / $smallGrids;
+					$sumRow : $int * $i;
+					width: $sumRow;
+					// Flex Row
+					-webkit-flex: 1 $sumRow;
+					flex: 1 $sumRow;
+				}
+
+				// Padding
+
+				&.grid.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} .row > div,
+				body &.grid .row.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} > div,
+				html body &.grid .row > div.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)}, 
+				&.row.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} > div,
+				body &.row > div.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} {
+					padding: 0 #{nth($paddingArr,$i)}px 0 #{nth($paddingArr,$i)}px;
+				}
+
+				// Flex grid table fallback break
+
+				@media screen  and ( min-width: $min ) {
+
+					body &.grid.flex .row.#{nth($rezName,$it)}-#{$i} > div.break {
+						display: none !important;
+					}
+
+					&.grid.flex.#{nth($rezName,$it)}-#{$i} .row > div.break:nth-child(#{$i*2}n) {
+						display: block;
+					}
+
+					body &.grid.flex .row.#{nth($rezName,$it)}-#{$i} > div.break:nth-child(#{$i*2}n) {
+						display: block !important;
+					}
+
+					// Update table view
+
+					&.grid.flex {
+						@if $i % 2 == 0 { 
+							display:block;
+						} @else { 
+							display:table-row; 
+						}
+					}
+
+				}
+
+			}
+
+			// Alternating main grid for refreshing display (fallback only)
+			
+
+		}
+
+
+	}
+
+}
