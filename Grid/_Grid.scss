@@ -9,10 +9,10 @@ $paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
 
 .#{$namespace} {
 
-	&.grid {
-		float: left;
-		width: 100%;
-		max-width: $maxWidth;
+	&.grid,
+	&.row {
+		width: 100% !important;
+		max-width: $maxWidth !important;
 		box-sizing: border-box;
 	}
 
@@ -24,8 +24,9 @@ $paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
 		float: left;
 	}
 
-	&.grid img {
+	&.grid img, &.grid video {
 		max-width: 100%;
+		height: auto;
 	}
 
 	// Table layout
@@ -90,6 +91,14 @@ $paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
     		align-self: flex-end;
 		}
 
+		// Even Padding
+
+		body &.grid.even-padding > div > div,
+		body &.grid .row.even-padding > div,
+		body &.row.even-padding > div {
+			padding-left: 0 !important;
+		}
+
 	// Default desktop settings
 
 	@for $i from $desktop through 1 {
@@ -120,12 +129,21 @@ $paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
 			flex: 1 $sumRow;
 		}
 
+		// Padding
+
 		&.grid.padding-desktop-#{nth($paddingArr,$i)} .row > div,
 		body &.grid .row.padding-desktop-#{nth($paddingArr,$i)} > div,
 		html body &.grid .row > div.padding-desktop-#{nth($paddingArr,$i)},
 		&.row.padding-desktop-#{nth($paddingArr,$i)} > div,
 		body &.row > div.padding-desktop-#{nth($paddingArr,$i)} {
-			padding: 0 #{nth($paddingArr,$i)}px 0 #{nth($paddingArr,$i)}px;
+			padding: 0 #{nth($paddingArr,$i)}px 0 #{nth($paddingArr,$i)}px !important;
+		}
+		
+		&.grid.even-padding.padding-desktop-#{nth($paddingArr,$i)} .row, 
+		&.grid.even-padding .row.padding-desktop-#{nth($paddingArr,$i)},
+		&.grid .row.even-padding.padding-desktop-#{nth($paddingArr,$i)},
+		&.row.even-padding.padding-desktop-#{nth($paddingArr,$i)} {
+			padding-left: #{nth($paddingArr,$i)}px !important;
 		}
 
 		// Flex grid table fallback break
@@ -170,9 +188,7 @@ $paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
 				&.row.flex.#{nth($rezName,$it)}-#{$i} > div {
 					display: -webkit-flex;
 					display: flex;
-					
 					$sum2: (100% / $i) - 4;
-
 					-webkit-flex: 1 $sum2;
 					flex: 1 $sum2;
 				}
@@ -197,7 +213,16 @@ $paddingArr: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85;
 				html body &.grid .row > div.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)}, 
 				&.row.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} > div,
 				body &.row > div.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} {
-					padding: 0 #{nth($paddingArr,$i)}px 0 #{nth($paddingArr,$i)}px;
+					padding: 0 #{nth($paddingArr,$i)}px 0 #{nth($paddingArr,$i)}px !important;
+				}
+
+				// Even Padding
+				
+				&.grid.even-padding.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} .row,
+				&.grid.even-padding .row.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)},
+				&.grid .row.even-padding.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)},
+				&.row.even-padding.padding-#{nth($rezName,$it)}-#{nth($paddingArr,$i)} {
+					padding-left: #{nth($paddingArr,$i)}px !important;
 				}
 
 				// Flex grid table fallback break

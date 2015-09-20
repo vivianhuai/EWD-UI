@@ -1,6 +1,6 @@
 <h1 class="center">Buttons</h1>
 <p>We’ve remastered buttons that are now simplistic and minimal in markup. No more remembering twenty to fifty different combinations, with just a little DOM you can easily produce a range of button combinations.</p>
-<div class="center stoptrigger mt">
+<div class="center stoptrigger mt lmb">
 
 	<div>
 
@@ -15,9 +15,9 @@ All other classes are optional -->
 <a href="#/" class="ewd button label right"><i class="pencil"></i>Edit</a>
 <a href="#/" class="ewd button">Text</a></textarea></code></pre>
 
-		<a href="#/" class="ewd button toggle"><i class="pencil"></i></a>
+		<a href="#/" class="ewd button"><i class="pencil"></i></a>
 		<a href="#/" class="ewd button label"><i class="pencil"></i>Edit</a>
-		<a href="#/" class="ewd button label right toggle"><i class="pencil"></i>Edit</a>
+		<a href="#/" class="ewd button label right"><i class="pencil"></i>Edit</a>
 		<a href="#/" class="ewd button">Text</a>
 
 	</div>
@@ -84,7 +84,7 @@ Vertical will target all group's, vertically stacking the buttons at the specifi
 	</div>
 </div></textarea></code></pre>
 
-		<div class="ewd buttons break-huge vertical-medium toggle">
+		<div class="ewd buttons break-huge vertical-medium">
 			<div>
 				<a href="#/"><i class="sort-amount-asc"></i></a>
 				<a href="#/"><i class="sort-amount-desc"></i></a>
@@ -345,7 +345,7 @@ All sizes can be optionally animated. -->
 </div>
 
 <!-- Toggle groups of grouped buttons with animation. -->
-<div class="ewd buttons fill gray animate toggle">
+<div class="ewd buttons fill gray animate">
 	<div>
 		...
 	</div>
@@ -357,8 +357,22 @@ All sizes can be optionally animated. -->
 		<a href="#/" class="ewd button fill gray label animate toggle"><i class="pencil"></i>Toggle</a>
 
 		<div class="ewd buttons fill gray animate toggle">
-			<a href="#/" class="label"><i class="pencil"></i>Option 1</a>
-			<a href="#/" class="label right"><i class="pencil"></i>Option 2</a>
+			<a href="#/" class="label"><i class="pencil"></i>G1</a>
+			<a href="#/" class="label right"><i class="pencil"></i>G2</a>
+		</div>
+
+		<br/>
+		<br/>
+
+		<div class="ewd buttons fill gray animate toggle">
+			<div>
+				<a href="#/" class="label"><i class="pencil"></i>Opt 1</a>
+				<a href="#/" class="label right"><i class="pencil"></i>Opt 2</a>
+			</div>
+			<div>
+				<a href="#/" class="label"><i class="pencil"></i>Opt 3</a>
+				<a href="#/" class="label right"><i class="pencil"></i>Opt 4</a>
+			</div>
 		</div>
 
 	</div>

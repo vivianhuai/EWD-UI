@@ -27,7 +27,7 @@
 	</div>
 </div></textarea></code></pre>
 
-		<div class="mt ewd grid desktop-16 massive-8 medium-4">
+		<div class="mt ewd grid desktop-16 massive-8 medium-4 fl">
 			<div class="row">
 				<div><br/></div>
 				<div><br/></div>
@@ -68,7 +68,7 @@
 	</div>
 </div></textarea></code></pre>
 
-		<div class="mt ewd grid desktop-16 massive-8 medium-4">
+		<div class="mt ewd grid desktop-16 massive-8 medium-4 fl">
 			<div class="row">
 				<div><br/></div>
 				<div><br/></div>
@@ -115,7 +115,7 @@
 	</div>
 </div></textarea></code></pre>
 
-		<div class="mt ewd grid">
+		<div class="mt ewd grid fl">
 			<div class="row">
 				<div class="desktop-10 massive-5 medium-10"><br/></div>
 				<div class="desktop-6 massive-10 medium-5"><br/></div>
@@ -229,6 +229,21 @@
 				<div><br/></div>
 				<div><br/></div>
 			</div>
+		</div>
+
+		<div class="center mt">
+
+			<p>By simply adding the class of <b>even-padding</b> to a row or grid element, you'll get a nice even padding...</p>
+
+			<div class="options">
+				<div class="ewd row even-padding desktop-4 padding-desktop-55 massive-2 padding-massive-25 medium-1 padding-medium-10">
+					<div><br/></div>
+					<div><br/></div>
+					<div><br/></div>
+					<div><br/></div>
+				</div>
+			</div>
+
 		</div>
 
 	</div>

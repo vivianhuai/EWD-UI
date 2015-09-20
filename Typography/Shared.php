@@ -222,7 +222,7 @@
 <!-- This is our live example only using three resolutions but you can use more -->
 <p class="ewd desktop-4 massive-2 medium-1">Morbi iaculis lectus...</p></textarea></code></pre>
 
-	<div class="options mt">
+	<div class="options mt lmb">
 	
 		<p class="ewd desktop-4 massive-2 medium-1">Morbi iaculis lectus non lacus lacinia auctor. Cras imperdiet mauris nec feugiat pulvinar. Fusce dolor libero, feugiat ultricies tincidunt ut, finibus ac nulla. Suspendisse gravida faucibus pharetra. Duis consequat lacus ac varius gravida. Fusce mattis sapien vitae mi faucibus, nec malesuada nisi condimentum. Cras fringilla lorem nibh, vel consequat velit faucibus a. Fusce nec auctor dui. Morbi ultricies viverra diam, eget elementum nibh rutrum a. Phasellus condimentum venenatis facilisis. Pellentesque a ipsum id leo pretium elementum at eget est. Nulla imperdiet interdum diam non facilisis. Nulla consequat auctor dui non tempor. Nulla facilisi. Suspendisse molestie quis mi sit amet interdum. Curabitur sit amet erat eleifend diam molestie vulputate nec ac augue. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis ac elit risus. Nulla varius augue quam, sit amet imperdiet lorem pharetra vitae. Suspendisse sagittis lectus quis dui faucibus, non pellentesque enim elementum. Etiam rutrum tincidunt sem nec pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras consequat mollis quam, eu porttitor leo. Vestibulum sit amet dignissim velit. Proin quis porttitor magna. Aenean vel leo nulla.</p>
 

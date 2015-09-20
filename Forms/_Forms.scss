@@ -24,6 +24,11 @@
 		vertical-align: middle;
 	}
 
+	&.field > i {
+		pointer-events: none;
+		cursor: default;
+	}
+
 	&.form .field input, 
 	&.field input,
 	&.form .field select, 
@@ -86,24 +91,193 @@
 		height: 100%;
 	}
 
-		// Fluid
+	// Colors
 
-		&.form .field.fluid,
-		&.field.fluid {
-			width: 100%;
+	$colorFieldMap : (
+		//    Border color,      Hover color    ,      Ative color    , Text color
+		"invert" : ( #fff , rgba(255,255,255,.2), rgba(255,255,255,.4), #fff ),
+		"gray"   : ( #ccc , rgba(200,200,200,.2), rgba(180,180,180,.3), #666 ),
+		"yellow" : ( #BD8645 , rgba(255,180, 63, .1) , rgba(255,180, 63, .2), #444 ),
+		"red"    : ( #82413C , rgba(153, 37, 34, .1) , rgba(153, 37, 34, .2), #444 ),
+		"green"  : ( #3A823B , rgba(58, 130, 59, .1) , rgba(58, 130, 59, .2), #444 ),
+		"blue"   : ( #3b83c0 , rgba(59, 131, 192, .1) , rgba(59, 131, 192, .2), #444 )
+	);
+
+	@each $colorMap, $keyNumber in $colorFieldMap {
+	    
+	    $col1: nth($keyNumber, 1);
+	    $col2: nth($keyNumber, 2);
+	    $col3: nth($keyNumber, 3);
+	    $col4: nth($keyNumber, 4);
+	    
+	    .#{$namespace}.field.#{$colorMap} {
+	        border-color:$col1 !important;
+	    }
+
+	    .#{$namespace}.field.#{$colorMap} i {
+	    	@if $col4 == #666 { color: $col4; } @else { color: $col1; }
+	    	background: $col3;
+	    	border-color:$col1 !important;
+	    }
+
+	}
+
+	// Fill Style
+
+	&.form.fill .field,
+	&.field.fill,
+	&.form.fill .field i,
+	&.field.fill i,
+	&.form.flat .field,
+	&.field.flat,
+	&.form.flat .field i,
+	&.field.flat i {
+		border:none !important;
+	}
+
+	&.form.fill .field a:hover,
+	&.field.fill a:hover {
+		opacity: .5;
+	}
+
+	&.form.fill .field a:active,
+	&.field.fill a:active {
+		opacity: .35;
+	}
+
+	$colorFieldFillMap : (
+		"fill"   : ( #353d3f , #596466, #b1b5b4 ),
+		"invert" : ( #fff , #f7f7f7, #444 ),
+		"gray"   : ( #ccc , #bbb, #fff ),
+		"yellow" : ( #FFB43F , #FFC036 , #fff ),
+		"red"    : ( #cc181e , #FF282F , #fff ),
+		"green"  : ( #449945 , #59C75A , #fff ),
+		"blue"   : ( #3b83c0 , #469BE3 , #fff )
+	);
+
+	@each $colorFieldFillMap, $keyNumber in $colorFieldFillMap {
+
+		$col1: nth($keyNumber, 1);
+	    $col2: nth($keyNumber, 2);
+	    $col3: nth($keyNumber, 3);
+
+		&.form.fill.#{$colorFieldFillMap} .field,
+		&.field.fill.#{$colorFieldFillMap} {
+			background: $col1;
+			color: $col3;
 		}
 
-		// Rounded
-
-		&.field.rounded {
-			@include borderRadius(5000px);
+		&.form.fill.#{$colorFieldFillMap} .field i,
+		&.field.fill.#{$colorFieldFillMap} i{
+			background: $col2;
+			color: $col3;
 		}
 
-	// Success
+		&.form.fill.#{$colorFieldFillMap} .field a,
+		&.field.fill.#{$colorFieldFillMap} a {
+			background: $col1;
+			border-color: $col1 !important;
+			color: $col3 !important;
+		}
 
+	}
 
+	// Flat
 
-	// Error
+	&.form.flat .field input,
+	&.field.flat input {
+		height: 37px;
+		border:2px solid;
+	}
+
+	&.form.flat.rounded .field input:first-child:last-child,
+	&.field.flat.rounded input:first-child:last-child {
+		@include borderRadius(500px);
+	}
+
+	&.form.flat.rounded .field input:first-child,
+	&.field.flat.rounded input:first-child {
+		@include borderRadius(500px 0 0 500px);
+	}
+
+	&.form.flat.rounded .field input:last-child,
+	&.field.flat.rounded input:last-child {
+		@include borderRadius(0 500px 500px 0);
+	}
+
+	&.form.flat .field a:first-child,
+	&.field.flat a:first-child {
+		@include borderRadius(3px 0 0 3px !important);
+	}
+
+	&.form .field a:last-child,
+	&.field a:last-child {
+		@include borderRadius(0 3px 3px 0 !important);
+	}
+
+	&.form.rounded .field a:last-child,
+	&.field.rounded a:last-child {
+		@include borderRadius(0 500px 500px 0 !important);
+	}
+	
+	&.form.flat .field a:hover,
+	&.field.flat a:hover {
+		opacity: .95;
+	}
+
+	&.form.flat .field a:active,
+	&.field.flat a:active {
+		opacity: .9;
+	}
+
+	$colorFieldFillMap : (
+		"flat"   : ( #353d3f , #596466, #b1b5b4 ),
+		"invert" : ( #fff , #fff, #444 ),
+		"gray"   : ( #ccc , #bbb, #fff ),
+		"yellow" : ( #FFB43F , #FFC036 , #fff ),
+		"red"    : ( #cc181e , #FF282F , #fff ),
+		"green"  : ( #449945 , #59C75A , #fff ),
+		"blue"   : ( #3b83c0 , #469BE3 , #fff )
+	);
+
+	@each $colorFieldFillMap, $keyNumber in $colorFieldFillMap {
+
+		$col1: nth($keyNumber, 1);
+	    $col2: nth($keyNumber, 2);
+	    $col3: nth($keyNumber, 3);
+
+		&.form.flat.#{$colorFieldFillMap} .field input,
+		&.field.flat.#{$colorFieldFillMap} input{
+			border-color: $col2;
+		}
+
+		&.form.flat.#{$colorFieldFillMap} .field i,
+		&.field.flat.#{$colorFieldFillMap} i{
+			background: $col2;
+			color: $col3;
+		}
+
+		&.form.flat.#{$colorFieldFillMap} .field a,
+		&.field.flat.#{$colorFieldFillMap} a {
+			background: $col1;
+			border-color: $col1 !important;
+			color: $col3;
+		}
+
+	}
+
+	// Fluid
+
+	&.form .field.fluid,
+	&.field.fluid {
+		width: 100%;
+	}
+
+	// Rounded
+
+	&.field.rounded {
+		@include borderRadius(5000px);
+	}
 
 	// Checkboxes and Radio buttons
 
